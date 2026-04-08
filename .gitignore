@@ -97,3 +97,23 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+
+# macOS                                                                                                                                                                                                                                        
+.DS_Store
+**/.DS_Store                                                                                                                                                                                                                                   
+                                                            
+# Xcode build output (if building for iOS)                                                                                                                                                                                                     
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/                                                                                                                                                                                                                      
+*.xcuserstate                                             
+                                                                                                                                                                                                                                                 
+# IL2CPP build output (this was a huge chunk of your FlappyBird noise)                                                                                                                                                                         
+/[Bb]uilds/Il2CppOutputProject/                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                 
+# Claude Code local settings                              
+.claude/settings.local.json        
+
+# Windows                                                                                                                                                                                                                                      
+Thumbs.db                                                                                                                                                                                                                                      
+Desktop.ini                                                                                                                                                                                                                                    
+*.lnk 
