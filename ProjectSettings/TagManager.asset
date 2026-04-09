@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - ScoreGate
+  - Ceiling
   layers:
   - Default
   - TransparentFX
@@ -13,10 +15,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Bird
+  - Obstacle
+  - ScoreZone
+  - Boundary
   - 
   - 
   - 
@@ -40,4 +42,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1
+    locked: 0
+  - name: Ground
+    uniqueID: 2
+    locked: 0
+  - name: Pipes
+    uniqueID: 3
+    locked: 0
+  - name: Bird
+    uniqueID: 4
+    locked: 0
+  - name: UI
+    uniqueID: 5
     locked: 0
