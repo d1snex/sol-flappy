@@ -110,6 +110,9 @@ InitTestScene*.unity*
 # IL2CPP build output (this was a huge chunk of your FlappyBird noise)                                                                                                                                                                         
 /[Bb]uilds/Il2CppOutputProject/                                                                                                                                                                                                                
                                                                                                                                                                                                                                                  
+# Build output
+/[Bb]uildes/
+
 # Claude Code local settings
 .claude/        
 
