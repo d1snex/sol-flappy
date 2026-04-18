@@ -153,6 +153,11 @@ public static class SceneSetup
             new Vector2(0.5f, 0.3f), new Vector2(0.5f, 0.3f),
             Vector2.zero, new Vector2(120, 50));
 
+        // Connect Wallet button (below Play)
+        var walletBtnGO = CreateButton(canvas.transform, "ConnectWalletButton", "Connect Wallet",
+            new Vector2(0.5f, 0.22f), new Vector2(0.5f, 0.22f),
+            Vector2.zero, new Vector2(160, 50));
+
         // Managers
         var managers = new GameObject("Managers");
 
@@ -163,6 +168,24 @@ public static class SceneSetup
         audioSource.loop = false;
         var audioMgr = audioMgrGO.AddComponent<AudioManager>();
         SetAudioClips(audioMgr);
+
+        // WalletManager and Web3 must be root GameObjects for DontDestroyOnLoad to work
+        var walletMgrGO = new GameObject("WalletManager");
+        walletMgrGO.AddComponent<WalletManager>();
+
+        var web3GO = new GameObject("Web3");
+        var web3 = web3GO.AddComponent<Solana.Unity.SDK.Web3>();
+        web3.solanaWalletAdapterOptions ??= new Solana.Unity.SDK.SolanaWalletAdapterOptions();
+        web3.solanaWalletAdapterOptions.phantomWalletOptions ??= new Solana.Unity.SDK.PhantomWalletOptions();
+        web3.solanaWalletAdapterOptions.phantomWalletOptions.DeeplinkUrlScheme = "solflappy";
+        EditorUtility.SetDirty(web3);
+
+        var menuUIGO = new GameObject("MainMenuUI");
+        menuUIGO.transform.SetParent(managers.transform);
+        var menuUI = menuUIGO.AddComponent<MainMenuUI>();
+        SetPrivateField(menuUI, "playButton", playBtnGO.GetComponent<Button>());
+        SetPrivateField(menuUI, "connectWalletButton", walletBtnGO.GetComponent<Button>());
+        SetPrivateField(menuUI, "walletButtonText", walletBtnGO.GetComponentInChildren<UnityEngine.UI.Text>());
 
         EditorSceneManager.SaveScene(scene, "Assets/Scenes/MainMenu.unity");
         Debug.Log("FlappyBird: MainMenu scene created.");
