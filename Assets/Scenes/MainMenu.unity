@@ -620,6 +620,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuUI
   playButton: {fileID: 1016372654}
   connectWalletButton: {fileID: 1340326158}
+  balanceLabel: {fileID: 200000002}
 --- !u!1 &999486034
 GameObject:
   m_ObjectHideFlags: 0
@@ -1578,7 +1579,7 @@ GameObject:
   - component: {fileID: 200000004}
   - component: {fileID: 200000002}
   m_Layer: 0
-  m_Name: WalletAddressLabel
+  m_Name: BalanceLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

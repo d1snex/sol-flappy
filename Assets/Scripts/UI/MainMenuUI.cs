@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Solana.Unity.SDK;
 
 public class MainMenuUI : MonoBehaviour
 {
     [SerializeField] private Button playButton;
     [SerializeField] private Button connectWalletButton;
+    [SerializeField] private Text balanceLabel;
 
     private Text _connectButtonText;
     private Image _connectButtonImage;
@@ -21,6 +23,9 @@ public class MainMenuUI : MonoBehaviour
         _connectButtonText = connectWalletButton.GetComponentInChildren<Text>();
         _connectButtonImage = connectWalletButton.GetComponent<Image>();
 
+        if (balanceLabel != null)
+            balanceLabel.gameObject.SetActive(false);
+
         WalletManager.OnWalletConnected += OnWalletConnected;
         UpdateConnectButton();
     }
@@ -28,6 +33,7 @@ public class MainMenuUI : MonoBehaviour
     private void OnDestroy()
     {
         WalletManager.OnWalletConnected -= OnWalletConnected;
+        Web3.OnBalanceChange -= OnBalanceChange;
     }
 
     private void OnPlayPressed()
@@ -46,6 +52,15 @@ public class MainMenuUI : MonoBehaviour
     private void OnWalletConnected(string address)
     {
         UpdateConnectButton();
+        Web3.OnBalanceChange += OnBalanceChange;
+    }
+
+    private void OnBalanceChange(double sol)
+    {
+        if (balanceLabel == null)
+            return;
+        balanceLabel.gameObject.SetActive(true);
+        balanceLabel.text = $"{sol:F2} SOL";
     }
 
     private void UpdateConnectButton()
